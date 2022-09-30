@@ -1,0 +1,16 @@
+@import "../../styles/variable.scss";
+
+.Button {
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 0;
+  outline: 0;
+  border: 1px solid $primaryColor;
+  background-color: $textSecondary;
+  color: $primaryColor;
+  font-weight: 600;
+  &.primary {
+    background-color: $primaryColor;
+    color: $textSecondary;
+  }
+}
