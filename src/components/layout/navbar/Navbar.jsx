@@ -4,6 +4,7 @@ import IconButton from "../../icon_button/IconButton";
 import { ReactComponent as UserIcon } from "../../../assets/svg/user-icon.svg";
 import { ReactComponent as SearchIcon } from "../../../assets/svg/search-icon.svg";
 import { ReactComponent as CartIcon } from "../../../assets/svg/cart-icon.svg";
+import { Link } from "react-router-dom";
 import "./navbar.style.scss";
 const menuItems = [
   {
@@ -11,8 +12,8 @@ const menuItems = [
     href: "/",
   },
   {
-    title: "تماس با ما",
-    href: "/contact-us",
+    title: "درباره ما",
+    href: "/about-us",
   },
 ];
 
@@ -24,7 +25,7 @@ const Navbar = () => {
           <ul>
             {menuItems.map((item) => (
               <li key={item.title}>
-                <a href={item.href}>{item.title}</a>
+                <Link to={item.href}>{item.title}</Link>
               </li>
             ))}
           </ul>
