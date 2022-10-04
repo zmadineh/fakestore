@@ -3,7 +3,7 @@ import "./icon.button.style.scss";
 
 const IconButton = ({ onClick, children }) => {
   const handleClick = (e) => {
-    e.stopPropagation();
+    e.stopPropagation();  //?
     if (onClick) {
       onClick(e);
     }
