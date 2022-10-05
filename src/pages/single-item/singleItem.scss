@@ -1,6 +1,6 @@
 @import "../../styles/variable.scss";
 
-.Login__header {
+.SingleItem__header {
   margin-top: 50px;
 
   a {
@@ -9,7 +9,7 @@
   }
 }
 
-.Login__content {
+.SingleItem__content {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
