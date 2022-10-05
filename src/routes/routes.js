@@ -3,9 +3,8 @@ import Home from "../pages/home";
 import AboutUs from "../pages/about-us/AboutUs";
 import Categories from "../pages/categories/Categories";
 import Login from "../pages/login/Login";
-import Register from "../pages/register/Register";
+import SingleItem from "../pages/single-item/SingleItem";
 import Layout from "../components/layout";
-import Layout2 from "../components/layout2";
 
 const router = createBrowserRouter([
   {
@@ -24,19 +23,13 @@ const router = createBrowserRouter([
         path: "categories/:categoryID",
         element: <Categories />,
       },
-    ],
-  },
-  {
-    path: "/",
-    element: <Layout2 />,
-    children: [
       {
         path: "login",
         element: <Login />,
       },
       {
-        path: "register",
-        element: <Register />,
+        path: "single-item/:id",
+        element: <SingleItem />,
       },
     ],
   },

@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "../button/Button";
 import "./button.style.scss";
+
 const Card = ({ image, name, price, onClick }) => {
   return (
     <div className="Card">

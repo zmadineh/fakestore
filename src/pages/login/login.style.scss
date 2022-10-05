@@ -1,0 +1,15 @@
+@import "../../styles/variable.scss";
+
+.Login__header {
+  margin-top: 50px;
+
+  a {
+    text-decoration: none;
+    color: $textPrimary;
+  }
+}
+
+.Login__content {
+  display: flex;
+  justify-content: space-between;
+}

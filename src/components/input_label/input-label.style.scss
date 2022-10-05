@@ -1,0 +1,11 @@
+@import "../../styles/variable.scss";
+
+.InputLabel {
+  color: $textPrimary;
+  display: flex;
+  gap: 5px;
+
+  .label__necessary {
+    color: #ff0000;
+  }
+}
