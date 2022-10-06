@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Container from "../../container/Container";
 import IconButton from "../../icon_button/IconButton";
 import { ReactComponent as UserIcon } from "../../../assets/svg/user-icon.svg";
@@ -7,6 +7,7 @@ import { ReactComponent as CartIcon } from "../../../assets/svg/cart-icon.svg";
 import { Link } from "react-router-dom";
 import "./navbar.style.scss";
 import Cart from "../../cart/Cart";
+import { CartContext } from "../../../context/cart/CartProvider";
 const menuItems = [
   {
     title: "فروشگاه",
@@ -17,8 +18,9 @@ const menuItems = [
     href: "/about-us",
   },
 ];
-
 const Navbar = () => {
+  const { cartItems } = useContext(CartContext);
+  const totalCount = cartItems.reduce((prev, p) => prev + p.count, 0);
   const [showCart, setShowCart] = useState(false);
   return (
     <nav className="Navbar">
@@ -44,6 +46,7 @@ const Navbar = () => {
             </li>
             <li className="">
               <IconButton onClick={() => setShowCart(true)}>
+                {totalCount}
                 <CartIcon />
               </IconButton>
               <Cart open={showCart} handleClose={() => setShowCart(false)} />

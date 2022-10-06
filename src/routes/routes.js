@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Home from "../pages/home";
 import AboutUs from "../pages/about-us/AboutUs";
 import Categories from "../pages/categories/Categories";
+import Cart from "../pages/cart/Cart";
 import Layout from "../components/layout";
 const router = createBrowserRouter([
   {
@@ -17,25 +18,15 @@ const router = createBrowserRouter([
         element: <AboutUs />,
       },
       {
+        path: "cart",
+        element: <Cart />,
+      },
+      {
         path: "categories/:categoryID",
         element: <Categories />,
       },
     ],
   },
-  // {
-  //   path: "/",
-  //   element: <Layout2 />,
-  //   children: [
-  //     {
-  //       path: "login",
-  //       element: <Login />,
-  //     },
-  //     {
-  //       path: "register",
-  //       element: <Register />,
-  //     },
-  //   ],
-  // },
 ]);
 
 export default router;

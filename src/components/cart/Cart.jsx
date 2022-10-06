@@ -1,35 +1,22 @@
-import React, { useEffect, useReducer } from "react";
+import React, { useContext, useEffect } from "react";
 import "./cart.style.scss";
-import image from "../../assets/images/controller.png";
 import Button from "../button/Button";
 import IconButton from "../icon_button/IconButton";
-import { cartActions, cartReducer } from "./cart.reducer";
+import { cartActions } from "../../context/cart/cart.reducer";
 import clsx from "clsx";
+import { CartContext } from "../../context/cart/CartProvider";
+import { Link } from "react-router-dom";
 const Cart = ({ open, handleClose }) => {
-  const [products, dispatch] = useReducer(cartReducer, [
-    {
-      id: 1,
-      image: image,
-      name: "کالای ۱",
-      price: 22_000_000,
-      count: 1,
-    },
-    {
-      id: 2,
-      image: image,
-      name: "کالای ۲",
-      price: 2_000_000,
-      count: 5,
-    },
-  ]);
-  const totalCount = products.reduce((prev, p) => prev + p.count, 0);
-  const totalPrice = products.reduce((prev, p) => prev + p.price * p.count, 0);
+  const { dispatch, cartItems } = useContext(CartContext);
+
   useEffect(() => {
     document.addEventListener("click", handleClose);
     return () => {
       document.removeEventListener("click", handleClose);
     };
   }, [handleClose]);
+  const totalCount = cartItems.reduce((prev, p) => prev + p.count, 0);
+  const totalPrice = cartItems.reduce((prev, p) => prev + p.price * p.count, 0);
   return (
     <div
       onClick={(e) => {
@@ -39,12 +26,12 @@ const Cart = ({ open, handleClose }) => {
     >
       <header>
         <p>{`${totalCount} کالا`}</p>
-        <a href="/cart">مشاهده سبد خرید</a>
+        <Link to="/cart">مشاهده سبد خرید</Link>
       </header>
       <div>
-        {products.length ? (
+        {cartItems.length ? (
           <ul>
-            {products.map((p) => (
+            {cartItems.map((p) => (
               <li key={p.id}>
                 <img src={p.image} alt="" />
                 <div>{p.name}</div>
