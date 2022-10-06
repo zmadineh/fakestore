@@ -15,5 +15,8 @@
   .Navbar__content {
     display: flex;
     justify-content: space-between;
+    li {
+      position: relative;
+    }
   }
 }
