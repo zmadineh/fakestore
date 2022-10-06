@@ -12,8 +12,8 @@ const CartProvider = ({ children }) => {
   return (
     <CartContext.Provider
       value={{
-        cartItems: cartItems,
-        dispatch: dispatch,
+        cartItems,
+        dispatch,
       }}
     >
       {children}

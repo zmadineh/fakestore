@@ -62,3 +62,20 @@ export const products = [
     price: 23456,
   },
 ];
+
+export const fakeLogin = (username, password) => {
+  return new Promise((resolve, reject) => {
+    if (username === "09396903816" && password === "K@mij3314") {
+      setTimeout(() => {
+        resolve({
+          token: "sample token ",
+          firstName: "Ali",
+          lastName: "Komijani",
+          username: "09396903816",
+        });
+      }, 1000);
+    } else {
+      reject("invalid username or password");
+    }
+  });
+};
