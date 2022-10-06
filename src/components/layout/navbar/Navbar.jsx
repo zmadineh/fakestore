@@ -15,6 +15,10 @@ const menuItems = [
     title: "درباره ما",
     href: "/about-us",
   },
+  {
+    title: "ورود/ثبت نام",
+    href: "/login",
+  },
 ];
 
 const Navbar = () => {
