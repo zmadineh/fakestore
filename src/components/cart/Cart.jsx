@@ -8,7 +8,6 @@ import { CartContext } from "../../context/cart/CartProvider";
 import { Link } from "react-router-dom";
 const Cart = ({ open, handleClose }) => {
   const { dispatch, cartItems } = useContext(CartContext);
-
   useEffect(() => {
     document.addEventListener("click", handleClose);
     return () => {

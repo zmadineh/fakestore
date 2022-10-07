@@ -5,10 +5,10 @@ import { authActions } from "../../context/auth/auth.reducer";
 import { AuthContext } from "../../context/auth/AuthProvider";
 const Profile = () => {
   const { auth, authDispatch } = useContext(AuthContext);
-  console.log(auth);
   if (!auth.isLogin) {
     return <Navigate to="/login" />;
   }
+
   return (
     <div>
       Profile

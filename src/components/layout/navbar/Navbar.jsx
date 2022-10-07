@@ -9,6 +9,7 @@ import "./navbar.style.scss";
 import Cart from "../../cart/Cart";
 import { CartContext } from "../../../context/cart/CartProvider";
 import { AuthContext } from "../../../context/auth/AuthProvider";
+import Badge from "../../badge/Badge";
 const menuItems = [
   {
     title: "فروشگاه",
@@ -53,8 +54,9 @@ const Navbar = () => {
             </li>
             <li className="">
               <IconButton onClick={() => setShowCart(true)}>
-                {totalCount}
-                <CartIcon />
+                <Badge title={totalCount}>
+                  <CartIcon />
+                </Badge>
               </IconButton>
               <Cart open={showCart} handleClose={() => setShowCart(false)} />
             </li>
