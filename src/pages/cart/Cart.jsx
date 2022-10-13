@@ -5,16 +5,15 @@ import IconButton from "../../components/icon_button/IconButton";
 import { useSelector, useDispatch } from "react-redux";
 import {
   addItemToCart,
-  decreaseItemFromCart,
+  decreaseItemFromCart, selectCart,
 } from "../../toolkit/slices/cart.slice";
-// import { cartActions } from "../../context/cart/cart.reducer";
-// import { CartContext } from "../../context/cart/CartProvider";
 import "./cart.style.scss";
+
 const Cart = () => {
-  // const { cartItems, dispatch } = useContext(CartContext);
-  const cartItems = useSelector((state) => state.cart);
+  const cartItems = useSelector(selectCart);
   const dispatch = useDispatch();
   const totalPrice = cartItems.reduce((prev, p) => prev + p.price * p.count, 0);
+
   return (
     <div className="CartPage">
       <Container>
