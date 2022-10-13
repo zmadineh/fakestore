@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import Container from "../../container/Container";
 import IconButton from "../../icon_button/IconButton";
 import { ReactComponent as UserIcon } from "../../../assets/svg/user-icon.svg";
 import { ReactComponent as SearchIcon } from "../../../assets/svg/search-icon.svg";
 import { ReactComponent as CartIcon } from "../../../assets/svg/cart-icon.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./navbar.style.scss";
+import Cart from "../../cart/Cart";
+import { CartContext } from "../../../context/cart/CartProvider";
+import { AuthContext } from "../../../context/auth/AuthProvider";
+import Badge from "../../badge/Badge";
 const menuItems = [
   {
     title: "فروشگاه",
@@ -20,8 +24,12 @@ const menuItems = [
     href: "/login",
   },
 ];
-
 const Navbar = () => {
+  const navigate = useNavigate();
+  const { cartItems } = useContext(CartContext);
+  const totalCount = cartItems.reduce((prev, p) => prev + p.count, 0);
+  const [showCart, setShowCart] = useState(false);
+
   return (
     <nav className="Navbar">
       <Container>
@@ -40,14 +48,21 @@ const Navbar = () => {
               </IconButton>
             </li>
             <li>
-              <IconButton>
+              <IconButton
+                onClick={() => {
+                  navigate("/profile");
+                }}
+              >
                 <UserIcon />
               </IconButton>
             </li>
-            <li>
-              <IconButton>
-                <CartIcon />
+            <li className="">
+              <IconButton onClick={() => setShowCart(true)}>
+                <Badge title={totalCount}>
+                  <CartIcon />
+                </Badge>
               </IconButton>
+              <Cart open={showCart} handleClose={() => setShowCart(false)} />
             </li>
           </ul>
         </div>
