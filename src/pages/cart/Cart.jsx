@@ -2,11 +2,18 @@ import React, { useContext } from "react";
 import Button from "../../components/button/Button";
 import Container from "../../components/container/Container";
 import IconButton from "../../components/icon_button/IconButton";
-import { cartActions } from "../../context/cart/cart.reducer";
-import { CartContext } from "../../context/cart/CartProvider";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  addItemToCart,
+  decreaseItemFromCart,
+} from "../../toolkit/slices/cart.slice";
+// import { cartActions } from "../../context/cart/cart.reducer";
+// import { CartContext } from "../../context/cart/CartProvider";
 import "./cart.style.scss";
 const Cart = () => {
-  const { cartItems, dispatch } = useContext(CartContext);
+  // const { cartItems, dispatch } = useContext(CartContext);
+  const cartItems = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
   const totalPrice = cartItems.reduce((prev, p) => prev + p.price * p.count, 0);
   return (
     <div className="CartPage">
@@ -18,25 +25,11 @@ const Cart = () => {
                 <img src={p.image} alt="" />
                 <div>{p.name}</div>
                 <div className="Cart__controller">
-                  <IconButton
-                    onClick={() =>
-                      dispatch({
-                        type: cartActions.add,
-                        payload: p,
-                      })
-                    }
-                  >
+                  <IconButton onClick={() => dispatch(addItemToCart(p))}>
                     {"+"}
                   </IconButton>
                   {p.count}
-                  <IconButton
-                    onClick={() =>
-                      dispatch({
-                        type: cartActions.decrease,
-                        payload: p,
-                      })
-                    }
-                  >
+                  <IconButton onClick={() => dispatch(decreaseItemFromCart(p))}>
                     {"-"}
                   </IconButton>
                 </div>
